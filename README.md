@@ -11,7 +11,9 @@ I am learning Web API, and Web Application in Go Language from different Video C
 ## Setup
 
 ```powershell
+go mod init go_books_store_api
 
+go run .\cmd\api\
 ```
 
 ## Understanding Http Requests / Responses / Methods / Status Codes
