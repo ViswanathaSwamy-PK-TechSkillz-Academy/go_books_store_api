@@ -7,6 +7,7 @@ I am learning Web API, and Web Application in Go Language from different Video C
 > 1. <https://go.dev/learn/>
 > 1. <https://shell.cloud.google.com/?walkthrough_tutorial_url=https%3A%2F%2Fraw.githubusercontent.com%2Fgolang%2Ftour%2Fmaster%2Ftutorial%2Fweb-service-gin.md&pli=1&show=ide&environment_deployment=ide>
 > 1. <https://app.pluralsight.com/library/courses/go-building-web-services-applications/table-of-contents>
+> 1. <https://chatgpt.com/>
 
 ## Setup
 
@@ -54,3 +55,34 @@ go run .\cmd\api\
 
 > 1. Discussion and Demo
 > 1. [net/http (Default Go HTTP package)](https://pkg.go.dev/net/http)
+
+## Health Check Endpoints
+
+```go
+package main
+
+import (
+	"fmt"
+	"net/http"
+)
+
+func main() {
+	http.HandleFunc("/v1/healthcheck", healthcheck)
+	http.HandleFunc("/v1/version", version)
+
+	fmt.Println("Starting ... Server on port 8080")
+	err := http.ListenAndServe(":8080", nil) // Use default ServeMux
+	if err != nil {
+		fmt.Println("Error starting server: ", err)
+	}
+}
+
+func healthcheck(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Status: Healthy")
+}
+
+func version(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Environment: %s\n", "Development")
+	fmt.Fprintf(w, "Version: %s\n", "1.0.1")
+}
+```
