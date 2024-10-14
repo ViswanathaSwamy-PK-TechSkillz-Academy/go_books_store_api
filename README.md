@@ -13,3 +13,8 @@ I am learning Web API, and Web Application in Go Language from different Video C
 ```powershell
 
 ```
+
+## Understanding Http Requests / Responses
+
+> 1. Discussion and Demo
+> 1. <https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages>
