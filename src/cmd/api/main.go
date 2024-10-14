@@ -29,9 +29,6 @@ func main() {
 
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("/api/v1/healthcheck", healthcheck)
-	mux.HandleFunc("/api/v1/version", version)
-
 	logger := log.New(os.Stdout, "", log.Ldate|log.Ltime)
 
 	app := &application{
@@ -41,6 +38,9 @@ func main() {
 
 	addr := fmt.Sprintf(":%d", cfg.port)
 
+	mux.HandleFunc("/api/v1/healthcheck", app.healthcheck)
+	mux.HandleFunc("/api/v1/version", app.versioninfo)
+
 	logger.Printf("Starting %s server on %s", cfg.env, addr)
 	err := http.ListenAndServe(addr, mux)
 	if err != nil {
@@ -48,21 +48,21 @@ func main() {
 	}
 }
 
-func healthcheck(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet {
-		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
-		return
-	}
+// func healthcheck(w http.ResponseWriter, r *http.Request) {
+// 	if r.Method != http.MethodGet {
+// 		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
+// 		return
+// 	}
 
-	fmt.Fprintln(w, "Status: Healthy")
-}
+// 	fmt.Fprintln(w, "Status: Healthy")
+// }
 
-func version(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet {
-		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
-		return
-	}
+// func versioninfo(w http.ResponseWriter, r *http.Request) {
+// 	if r.Method != http.MethodGet {
+// 		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
+// 		return
+// 	}
 
-	fmt.Fprintf(w, "Environment: %s\n", "Development")
-	fmt.Fprintf(w, "Version: %s\n", versionNumber)
-}
+// 	fmt.Fprintf(w, "Environment: %s\n", "Development")
+// 	fmt.Fprintf(w, "Version: %s\n", versionNumber)
+// }
