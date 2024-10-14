@@ -2,10 +2,10 @@
 
 ###
 
-GET {{Books.API_HostAddress}}/v1/healthcheck
+GET {{Books.API_HostAddress}}/api/v1/healthcheck
 Accept: application/json
 
 ###
 
-GET {{Books.API_HostAddress}}/v1/version
+GET {{Books.API_HostAddress}}/api/v1/version
 Accept: application/json
