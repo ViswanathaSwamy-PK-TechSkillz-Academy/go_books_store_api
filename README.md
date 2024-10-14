@@ -21,6 +21,11 @@ I am learning Web API, and Web Application in Go Language from different Video C
 > 1. <https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET>
 > 1. <https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200>
 
+## REST (Representational State Transfer)
+
+> 1. Discussion and Demo
+> 1. <https://en.wikipedia.org/wiki/REST>
+
 ## Few Options to develop Web API in go lang
 
 > 1. Discussion and Demo
@@ -42,3 +47,8 @@ I am learning Web API, and Web Application in Go Language from different Video C
 > 1. `Documentation:` <https://gin-gonic.com/docs/>
 > 1. `Overview`: Gin is a lightweight and fast web framework that includes a router, middleware, and useful utilities for building APIs. It is known for its performance due to its low memory footprint.
 > 1. `When to use`: Use Gin if you need high performance, want minimalistic code, and require middleware support like logging, error handling, and more. It's popular for RESTful APIs.
+
+## What we will be using?
+
+> 1. Discussion and Demo
+> 1. [net/http (Default Go HTTP package)](https://pkg.go.dev/net/http)
