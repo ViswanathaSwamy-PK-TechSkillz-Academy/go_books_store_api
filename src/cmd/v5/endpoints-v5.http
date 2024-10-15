@@ -26,3 +26,8 @@ POST {{Books.API_HostAddress}}/api/v1/healthcheck
 Accept: application/json
 
 ###
+
+GET {{Books.API_HostAddress}}/api/v1/books
+Accept: application/json
+
+###
