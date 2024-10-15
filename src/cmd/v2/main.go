@@ -27,20 +27,10 @@ func main() {
 }
 
 func healthcheck(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet {
-		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
-		return
-	}
-
 	fmt.Fprintln(w, "Status: Healthy")
 }
 
 func versioninfo(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet {
-		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
-		return
-	}
-
 	fmt.Fprintf(w, "Environment: %s\n", "Development")
 	fmt.Fprintf(w, "Version: %s\n", "1.0.1")
 }
