@@ -36,16 +36,10 @@ func main() {
 
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello, you've requested: %s\n", r.URL.Path)
-	})
-
-	mux.HandleFunc("/helloworld", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello Welcome to Go Lang World, you've requested: %s\n", r.URL.Path)
-	})
-
-	mux.HandleFunc("/api/v1/healthcheck", healthcheck)
-	mux.HandleFunc("/api/v1/version", app.versioninfo)
+	// mux.HandleFunc("/", Home)
+	// mux.HandleFunc("/helloworld", HelloWorld)
+	// mux.HandleFunc("/api/v1/healthcheck", app.HealthCheck)
+	// mux.HandleFunc("/api/v1/version", app.VersionInfo)
 
 	addr := fmt.Sprintf(":%d", cfg.port)
 
@@ -54,23 +48,4 @@ func main() {
 	if err != nil {
 		fmt.Printf("Error starting server: %s\n", err)
 	}
-}
-
-func healthcheck(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet {
-		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
-		return
-	}
-
-	fmt.Fprintln(w, "Status: Healthy")
-}
-
-func (app *application) versioninfo(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet {
-		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
-		return
-	}
-
-	fmt.Fprintf(w, "Environment: %s\n", app.config.env)
-	fmt.Fprintf(w, "Version: %s\n", version)
 }
