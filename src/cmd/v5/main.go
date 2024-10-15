@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 )
 
 const version = "1.0.1"
@@ -34,18 +35,20 @@ func main() {
 		logger: logger,
 	}
 
-	mux := http.NewServeMux()
-
-	// mux.HandleFunc("/", Home)
-	// mux.HandleFunc("/helloworld", HelloWorld)
-	// mux.HandleFunc("/api/v1/healthcheck", app.HealthCheck)
-	// mux.HandleFunc("/api/v1/version", app.VersionInfo)
-
 	addr := fmt.Sprintf(":%d", cfg.port)
 
+	srv := &http.Server{
+		Addr:         addr,
+		Handler:      app.routes(),
+		IdleTimeout:  time.Minute,
+		ReadTimeout:  10 * time.Second,
+		WriteTimeout: 30 * time.Second,
+	}
+
 	logger.Printf("Starting %s server on %s", cfg.env, addr)
-	err := http.ListenAndServe(addr, mux) // Locally Scoped Custom ServeMux.
+	err := srv.ListenAndServe()
 	if err != nil {
-		fmt.Printf("Error starting server: %s\n", err)
+		logger.Printf("Error starting server: %v\n", err)
+		os.Exit(1)
 	}
 }
