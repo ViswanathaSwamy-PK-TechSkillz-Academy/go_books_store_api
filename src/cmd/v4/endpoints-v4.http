@@ -9,17 +9,6 @@ Accept: application/json
 
 GET {{Books.API_HostAddress}}/helloworld
 Accept: application/json
-a@Books.API_HostAddress = http://localhost:8080
-
-###
-
-GET {{Books.API_HostAddress}}
-Accept: application/json
-
-###
-
-GET {{Books.API_HostAddress}}/helloworld
-Accept: application/json
 
 ###
 
@@ -34,16 +23,6 @@ Accept: application/json
 ###
 
 POST {{Books.API_HostAddress}}/api/v1/healthcheck
-Accept: application/json
-
-###
-
-GET {{Books.API_HostAddress}}/api/v1/healthcheck
-Accept: application/json
-
-###
-
-GET {{Books.API_HostAddress}}/api/v1/version
 Accept: application/json
 
 ###
