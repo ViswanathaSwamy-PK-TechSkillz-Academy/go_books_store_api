@@ -81,7 +81,7 @@ func main() {
 }
 ```
 
-## Health Check Endpoints
+## [Health Check Endpoints](./src/cmd/v2/)
 
 ```go
 package main
@@ -111,3 +111,5 @@ func version(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Version: %s\n", "1.0.1")
 }
 ```
+
+## [Locally scoped ServeMux](./src/cmd/v2/)
