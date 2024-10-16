@@ -71,7 +71,7 @@ func (app *application) getBooksHandler(w http.ResponseWriter, r *http.Request) 
 
 	books := getDummyBooks()
 
-	js, err := json.Marshal(books)
+	js, err := json.MarshalIndent(books, "", "\t")
 	if err != nil {
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
