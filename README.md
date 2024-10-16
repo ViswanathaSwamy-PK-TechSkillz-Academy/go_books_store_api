@@ -8,6 +8,7 @@ I am learning Web API, and Web Application in Go Language from different Video C
 > 1. <https://shell.cloud.google.com/?walkthrough_tutorial_url=https%3A%2F%2Fraw.githubusercontent.com%2Fgolang%2Ftour%2Fmaster%2Ftutorial%2Fweb-service-gin.md&pli=1&show=ide&environment_deployment=ide>
 > 1. <https://app.pluralsight.com/library/courses/go-building-web-services-applications/table-of-contents>
 > 1. <https://chatgpt.com/>
+> 1. <https://gowebexamples.com/>
 
 ## Setup
 
@@ -56,7 +57,31 @@ go run .\cmd\api\
 > 1. Discussion and Demo
 > 1. [net/http (Default Go HTTP package)](https://pkg.go.dev/net/http)
 
-## Health Check Endpoints
+## [Hello World Endpoints](./src/cmd/v1/)
+
+```go
+package main
+
+import (
+	"fmt"
+	"net/http"
+)
+
+func main() {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Hello, you've requested: %s\n", r.URL.Path)
+	})
+
+	http.HandleFunc("/helloworld", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Hello Welcome to Go Lang World, you've requested: %s\n", r.URL.Path)
+	})
+
+	fmt.Println("Starting server on :8080")
+	http.ListenAndServe(":8080", nil)
+}
+```
+
+## [Health Check Endpoints](./src/cmd/v2/)
 
 ```go
 package main
@@ -86,3 +111,5 @@ func version(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Version: %s\n", "1.0.1")
 }
 ```
+
+## [Locally scoped ServeMux](./src/cmd/v3/)
