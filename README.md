@@ -113,3 +113,13 @@ func version(w http.ResponseWriter, r *http.Request) {
 ```
 
 ## [Locally scoped ServeMux](./src/cmd/v3/)
+
+> 1. Discussion and Demo
+
+## [Configuration and Methods](./src/cmd/v4/)
+
+> 1. Discussion and Demo
+
+## [Configuration, Methods, Handlers, and Routes](./src/cmd/v5/)
+
+> 1. Discussion and Demo
